@@ -4,7 +4,7 @@ var Twitter = require('twitter');
 var Spotify = require('node-spotify-api');
 var omdb = require('omdb');
 
-
+var request = require('request');
 var spotify = new Spotify(keys.spotify);
 var client = new Twitter(keys.twitter);
 
@@ -23,7 +23,7 @@ function grabOMDB(movieName){
         movieName = "Mr. Nobody";
     }
 
-    var requestURL = "http://www.omdbapi.com/?t=" + movieName + "&tomatoes=true&y=&plot=short&apikey=trilogy";
+    var requestURL = "http://www.omdbapi.com/?t=" + movieName + "&tomatoes=true&y=&plot=short&apikey=f8891384";
 
     request(requestURL, function(error, response, data){
 
@@ -41,16 +41,7 @@ function grabOMDB(movieName){
         console.log("The movie's actors are: " + JSON.parse(data)["Actors"]+ "\r\n");
         console.log("Here's the movie's Rotten Tomatoes Rating: " + JSON.parse(data)["tomatoRating"]+ "\r\n");
         console.log("Here's the movie's Rotten Tomatoes URL: " + JSON.parse(data)["tomatoURL"]+ "\r\n");
-        appendFile("-------------------------------------------------------"+ "\r\n");
-        appendFile("Here's the movie's title: " + JSON.parse(data)["Title"]+ "\r\n");
-        appendFile("Here's the movie's release year: " + JSON.parse(data)["Year"]+ "\r\n");
-        appendFile("Here's the movie's rating: " + JSON.parse(data)["imdbRating"]+ "\r\n");
-        appendFile("The movie was produced in: " + JSON.parse(data)["Country"]+ "\r\n");
-        appendFile("The movie's language is: " + JSON.parse(data)["Language"]+ "\r\n");
-        appendFile("Here's the movie's plot: " + JSON.parse(data)["Plot"]+ "\r\n");
-        appendFile("The movie's actors are: " + JSON.parse(data)["Actors"]+ "\r\n");
-        appendFile("Here's the movie's Rotten Tomatoes Rating: " + JSON.parse(data)["tomatoRating"]+ "\r\n");
-        appendFile("Here's the movie's Rotten Tomatoes URL: " + JSON.parse(data)["tomatoURL"]+ "\r\n");
+        
 
     });
 }
